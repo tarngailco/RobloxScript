@@ -9,17 +9,6 @@ local function bypassWalkSpeed()
     else
         getgenv().executed = true
         print("Walkspeed Bypassed")
-
-        local mt = getrawmetatable(game)
-        setreadonly(mt, false)
-
-        local oldindex = mt.__index
-        mt.__index = newcclosure(function(self, b)
-            if b == 'WalkSpeed' then
-                return 25
-            end
-            return oldindex(self, b)
-        end)
     end
 end
 
